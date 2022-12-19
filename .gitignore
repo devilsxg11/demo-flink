@@ -1,0 +1,45 @@
+target
+lib
+classes
+.idea
+.project
+.settings
+.git
+.svn
+.classpath
+*.iml
+*.class
+*.pyc
+*.DS_Store
+*.log
+project.config.*
+i18n.md
+tmp_dir
+out
+hsf
+logs
+node_modules
+bower_components
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+nbproject
+private
+build
+nbbuild
+dist
+nbdist
+.nb-gradle
