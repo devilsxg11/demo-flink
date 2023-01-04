@@ -123,7 +123,7 @@ public class KafkaDemo {
             e.printStackTrace();
         }
     }
-
+    // kafka 反序列化程序将 kafka 消息 转化为 KafkaEvent 对象
     static class KafkaEventSchema implements DeserializationSchema<KafkaEvent> {
 
         @Override
