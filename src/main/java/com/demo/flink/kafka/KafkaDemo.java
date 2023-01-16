@@ -35,7 +35,7 @@ import java.util.Objects;
 import java.util.Properties;
 
 /**
- * Copyright：gome.com.cn
+ * Copyright：dp.com
  * Author: SongXiaoGuang
  * Date: 2023/1/2.
  * Description:

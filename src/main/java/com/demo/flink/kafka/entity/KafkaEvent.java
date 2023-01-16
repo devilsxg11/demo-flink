@@ -1,7 +1,7 @@
 package com.demo.flink.kafka.entity;
 
 /**
- * Copyright：gome.com.cn
+ * Copyright：dp.com
  * Author: SongXiaoGuang
  * Date: 2023/1/3.
  * Description:

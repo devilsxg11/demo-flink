@@ -7,7 +7,7 @@ import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.util.Collector;
 
 /**
- * Copyright：gome.com.cn
+ * Copyright：dp.com
  * Author: SongXiaoGuang
  * Date: 2022/12/19.
  * Description:
