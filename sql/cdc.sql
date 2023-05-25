@@ -1,5 +1,9 @@
 
+-- 设置 job 名称
+SET 'pipeline.name' = 'sxg_cdc_job';
+-- 设置 checkpoint 
 SET 'execution.checkpointing.interval' = '300s';
+
 
 -- 使用 HiveCatalog 存储元信息
 CREATE CATALOG hiveCatalog
@@ -26,10 +30,11 @@ CREATE TABLE sxg_cdc_order (
       'connector' = 'mysql-cdc',
       'hostname' = '10.112.182.11',
       'port' = '3306',
-      'username' = 'data_api_user',
-      'password' = 'api_use68pw9esd',
+      'username' = 'root',
+      'password' = 'root_use68pw9esd',
       'database-name' = 'test',
-      'table-name' = 'sxg_order'
+      'table-name' = 'sxg_order',
+      'server-id' = '1'	
       );
 
 -- 使用 Table Connector 定义目标表
@@ -38,20 +43,20 @@ DROP TABLE IF EXISTS sxg_cdc_order_sum;
 CREATE TABLE sxg_cdc_order_sum(
                                   channel_id INT,
                                   sum_amount BIGINT,
-                                  update_time AS PROCTIME(),
+                                  update_time TIMESTAMP(3),
                                   PRIMARY KEY (channel_id) NOT ENFORCED
 ) WITH (
       'connector' = 'jdbc',
       'url' = 'jdbc:mysql://10.112.182.11:3306/test?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false',
       'table-name' = 'sxg_order_sum',
-      'username' = 'data_api_user',
-      'password' = 'api_use68pw9esd'
+      'username' = 'root',
+      'password' = 'root_use68pw9esd'
       );
 
 
 -- 将会总后的数据写入订单汇总表
 INSERT INTO sxg_cdc_order_sum
-SELECT channel_id,sum(amount)
+SELECT channel_id,sum(amount),LOCALTIMESTAMP
 FROM sxg_cdc_order
 GROUP BY channel_id;
 
